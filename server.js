@@ -68,9 +68,12 @@ CATEGORIES.forEach((category) => {
       price,
       description: `The ${adjective} ${noun.toLowerCase()} brings ${material.toLowerCase()} craftsmanship into everyday use — built to hold up to real life, not just showrooms.`,
       stock,
-      // Unique per product (seeded by id), not just by category, so items
-      // in the same category don't all render the same picture.
-      image: `https://picsum.photos/seed/oakhaven-${nextProductId}/600/450`,
+      // Themed to the category (so sofas look like sofas, chairs like
+      // chairs) but locked to a unique seed per product id, so items in
+      // the same category don't all render the same picture.
+      image: `https://loremflickr.com/600/450/${encodeURIComponent(
+        category.toLowerCase(),
+      )},furniture?lock=${nextProductId}`,
     });
     nextProductId += 1;
   });
